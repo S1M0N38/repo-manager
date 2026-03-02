@@ -1,5 +1,5 @@
 ---
-name: repo-manager-issue-labeler
+name: repo_manager_issue_labeler
 description: Classify and label GitHub issues.
 version: 1.0.0
 license: MIT
