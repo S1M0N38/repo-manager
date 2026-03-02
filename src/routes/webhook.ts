@@ -88,6 +88,10 @@ export async function handleWebhook(req: Request, res: Response): Promise<void> 
   // Handle event based on type
   try {
     switch (eventType) {
+      case 'ping':
+        console.info('Received ping event - webhook verified');
+        res.status(200).json({ message: 'Pong! Webhook verified' });
+        break;
       case 'issues':
         await handleIssuesEvent(payload, repoConfig, res);
         break;
