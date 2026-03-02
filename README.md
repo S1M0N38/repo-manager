@@ -123,7 +123,7 @@ sudo chown -R www-data:www-data /opt/repo-manager
 The included `repo-manager.service` uses these defaults:
 - **User/Group:** `www-data` (common on Debian/Ubuntu)
 - **Install path:** `/opt/repo-manager`
-- **Bun path:** `/usr/local/bin/bun`
+- **Bun path:** `/root/.bun/bin/bun`
 
 Check your bun installation path and adjust if needed:
 
@@ -139,7 +139,7 @@ User=www-data                    # Service user (www-data, nobody, or dedicated 
 Group=www-data                   # Service group
 WorkingDirectory=/opt/repo-manager    # Where you cloned the repo
 EnvironmentFile=/opt/repo-manager/.env
-ExecStart=/usr/local/bin/bun run start  # Adjust bun path if needed
+ExecStart=/root/.bun/bin/bun run start  # Adjust bun path if needed
 ```
 
 <details>

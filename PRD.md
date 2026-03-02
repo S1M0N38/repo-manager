@@ -531,7 +531,7 @@ Group=www-data
 WorkingDirectory=/opt/repo-manager
 Environment="NODE_ENV=production"
 EnvironmentFile=/opt/repo-manager/.env
-ExecStart=/usr/local/bin/bun run start
+ExecStart=/root/.bun/bin/bun run start
 Restart=on-failure
 RestartSec=10
 StandardOutput=journal
@@ -557,7 +557,7 @@ sudo cp repo-manager.service /etc/systemd/system/
 
 # 2. Edit the service file to match your environment
 sudo nano /etc/systemd/system/repo-manager.service
-# Adjust: User, Group, WorkingDirectory, EnvironmentFile, ExecStart (bun path)
+# Adjust: User, Group, WorkingDirectory, EnvironmentFile, ExecStart (bun path: /root/.bun/bin/bun)
 
 # 3. Find bun path (if needed)
 which bun  # Use this path for ExecStart
