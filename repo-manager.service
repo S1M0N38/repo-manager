@@ -12,10 +12,13 @@ Group=www-data
 # WorkingDirectory: Path where repo-manager is installed
 WorkingDirectory=/opt/repo-manager
 Environment="NODE_ENV=production"
+# Environment: Add bun to PATH for spawned processes
+Environment="PATH=/var/www/.bun/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # EnvironmentFile: Path to your .env file (must be readable by User)
 EnvironmentFile=/opt/repo-manager/.env
 # ExecStart: Adjust bun path if installed elsewhere (check with 'which bun')
-ExecStart=/root/.bun/bin/bun run start
+# For www-data user, install bun with: sudo -u www-data curl -fsSL https://bun.sh/install | bash
+ExecStart=/var/www/.bun/bin/bun run start
 Restart=on-failure
 RestartSec=10
 StandardOutput=journal
