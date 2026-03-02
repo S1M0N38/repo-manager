@@ -32,6 +32,10 @@ repos:
       # Detect merge conflict markers
       - id: check-merge-conflict
 
+      # Prevent direct commits to main/master
+      - id: no-commit-to-branch
+        args: ["--branch=main", "--branch=master"]
+
       # Check for case conflicts (macOS/Windows compatibility)
       - id: check-case-conflict
 
