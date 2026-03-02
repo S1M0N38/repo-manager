@@ -103,7 +103,7 @@ For production deployments on Linux, you can run the server as a systemd service
 
 ```bash
 # Clone to /opt (or your preferred location)
-sudo git clone https://github.com/onoht.dev/repo-manager.git /opt/repo-manager
+sudo git clone <repository-url> /opt/repo-manager
 cd /opt/repo-manager
 
 # Install dependencies

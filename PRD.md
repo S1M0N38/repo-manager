@@ -521,7 +521,7 @@ repo-manager includes a systemd service unit for production deployment on Linux 
 ```ini
 [Unit]
 Description=Repo Manager - GitHub Webhook Server
-Documentation=https://github.com/onoht.dev/repo-manager
+Documentation=https://github.com/S1M0N38/repo-manager
 After=network.target
 
 [Service]
