@@ -16,7 +16,7 @@ export function createServer(): express.Application {
   });
 
   // GitHub webhook endpoint
-  app.post('/webhook/github', validateWebhookSignature(config.githubWebhookSecret), handleWebhook);
+  app.post('/', validateWebhookSignature(config.githubWebhookSecret), handleWebhook);
 
   return app;
 }

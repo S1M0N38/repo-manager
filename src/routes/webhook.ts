@@ -64,7 +64,15 @@ export async function handleWebhook(req: Request, res: Response): Promise<void> 
 
   console.info(`Received webhook: ${eventType}`);
 
-  // Parse and validate payload
+  // Handle ping event first (before validation) - ping has different payload structure
+  if (eventType === 'ping') {
+    console.info('Received ping event - webhook verified');
+    console.info('Ping payload:', JSON.stringify(req.body, null, 2));
+    res.status(200).json({ message: 'Pong! Webhook verified' });
+    return;
+  }
+
+  // Parse and validate payload for other events
   const parseResult = GitHubWebhookPayloadSchema.safeParse(req.body);
   if (!parseResult.success) {
     res.status(400).json({ error: 'Invalid payload', details: parseResult.error.errors });
@@ -88,10 +96,6 @@ export async function handleWebhook(req: Request, res: Response): Promise<void> 
   // Handle event based on type
   try {
     switch (eventType) {
-      case 'ping':
-        console.info('Received ping event - webhook verified');
-        res.status(200).json({ message: 'Pong! Webhook verified' });
-        break;
       case 'issues':
         await handleIssuesEvent(payload, repoConfig, res);
         break;
