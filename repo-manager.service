@@ -1,0 +1,33 @@
+[Unit]
+Description=Repo Manager - GitHub Webhook Server
+Documentation=https://github.com/onoht.dev/repo-manager
+After=network.target
+
+[Service]
+Type=simple
+# User and Group: Change to match your system
+# Common options: www-data, nobody, or create a dedicated user
+User=www-data
+Group=www-data
+# WorkingDirectory: Path where repo-manager is installed
+WorkingDirectory=/opt/repo-manager
+Environment="NODE_ENV=production"
+# EnvironmentFile: Path to your .env file (must be readable by User)
+EnvironmentFile=/opt/repo-manager/.env
+# ExecStart: Adjust bun path if installed elsewhere (check with 'which bun')
+ExecStart=/usr/local/bin/bun run start
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=repo-manager
+
+# Security hardening (recommended for production)
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/repo-manager
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
