@@ -1,0 +1,16 @@
+{
+  "repos": {
+    "owner/repo": {
+      "enabled": true,
+      "labels": ["bug", "enhancement", "documentation", "question", "triage"],
+      "events": {
+        "issues": {
+          "opened": {
+            "skill": "github-labeler",
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
